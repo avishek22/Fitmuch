@@ -17,7 +17,7 @@ const { MONGOURI } = require("./keys");
  mongoose.set("useFindAndModify", false);
 app.use(cors());
 app.use(express.json());
-
+app.use("/", require("./router/day"));
 
 
 app.listen(PORT, (e) => {
