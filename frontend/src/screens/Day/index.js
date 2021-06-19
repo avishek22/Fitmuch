@@ -1,8 +1,9 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
-import { View, Text, TouchableOpacity,Image } from 'react-native'
+import { View, Text, TouchableOpacity,Image, ScrollView,ActivityIndicator } from 'react-native'
 import { EXERCISE, EXERCISE_DETAIL } from '../../constants/routeNames'
-
+import colors from '../../assets/themes/colors'
+import styles from './styles'
 const Day = () => {
     const data=[
         {
@@ -12,6 +13,7 @@ const Day = () => {
     
     const {navigate}=useNavigation()
     const[day,setDay]=useState([])
+    const[loading,setLoading]=useState(true)
     useEffect(() => {
         fetch("http://10.0.2.2:4000/allday", {
             headers:{
@@ -25,6 +27,7 @@ const Day = () => {
             console.log('ok')
             console.log(result.days)
             setDay(result.days)
+            setLoading(false)
             
           }).catch((err)=>{
               console.log(err)
@@ -32,8 +35,10 @@ const Day = () => {
           });
       }, []);
     return (
-        <View>
-            <Text>Hello from Day</Text>
+        
+        <ScrollView style={{backgroundColor:'white'}}>
+        {loading?<View style={{padding:100}}><ActivityIndicator size="large" color={colors.primary}></ActivityIndicator></View>:( <View >
+            {/* <Text>Hello from Day</Text>
             <TouchableOpacity onPress={()=>{
                 navigate(EXERCISE)
             }}><Text>Exercise</Text></TouchableOpacity>
@@ -41,19 +46,34 @@ const Day = () => {
                 navigate(EXERCISE_DETAIL)
             }}
             ><Text>Exercise detail</Text></TouchableOpacity>
-            <Text>hi</Text>
+            <Text>hi</Text> */}
             <View>
             {day.map(function(item, i){
-                const{day,picture}=item
+                const{day,picture,_id}=item
                  return(
-                <View key={i}>
-                    <Text>{day}</Text>
-                    <Image style={{width:45,height:45,borderRadius:100}} source={{uri:picture}}></Image>
+                     <TouchableOpacity key={_id} onPress={()=>{
+                         console.log(_id)
+                         navigate(EXERCISE)
+                     }}>
+                     <View style={styles.total}>
+                <View  style={styles.dayContainer}>
+                    
+                     <Image style={{width:150,height:110,paddingLeft:20,position:'absolute',borderRadius:6,borderTopLeftRadius:0,borderBottomLeftRadius:0,borderLeftWidth:20,borderColor:'#F0A160'}} source={{uri:picture}}></Image> 
+                     
+                    </View>
+                    <Text style={styles.dayText}>{day}</Text>
+                    
+    
+                    
                 </View>
+                </TouchableOpacity>
+                
                 );
         }   )}
     </View>
-        </View>
+        </View>)}
+       
+        </ScrollView>
     )
 }
 
