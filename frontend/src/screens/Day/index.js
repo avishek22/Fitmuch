@@ -58,7 +58,7 @@ const Day = () => {
                      <View style={styles.total}>
                 <View  style={styles.dayContainer}>
                     
-                     <Image style={{width:150,height:110,paddingLeft:20,position:'absolute',borderRadius:6,borderTopLeftRadius:0,borderBottomLeftRadius:0,borderLeftWidth:20,borderColor:'#F0A160'}} source={{uri:picture}}></Image> 
+                     <Image style={{width:150,height:110,paddingLeft:20,position:'absolute',borderRadius:6,borderTopLeftRadius:0,borderBottomLeftRadius:0,borderLeftWidth:20,borderColor:'#F0A160',borderWidth:2}} source={{uri:picture}}></Image> 
                      
                     </View>
                     <Text style={styles.dayText}>{day}</Text>

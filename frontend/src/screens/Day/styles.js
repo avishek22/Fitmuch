@@ -11,6 +11,7 @@ dayContainer:{
     justifyContent:'flex-end',
     alignContent:'center',
     
+    
 
 },
 total:{
@@ -31,7 +32,8 @@ dayText:{
     alignItems:'center',
     marginTop:-60,
     paddingBottom:30,
-    color:'white'
+    color:'#F0A160',
+    fontFamily:'DancingScript-Bold'
     
 
 }
