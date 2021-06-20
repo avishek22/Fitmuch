@@ -14,17 +14,6 @@ dayContainer:{
     
 
 },
-total:{
-    borderColor:'#F0A160',
-    borderWidth:5,
-    margin:5,
-    borderRadius:10,
-    zIndex:1000,
-    
-        elevation: 5,
-        // backgroundColor:'#e8f4f8'
-    backgroundColor:'#100c08'
-},
 dayText:{
     fontSize:30,
     paddingLeft:50,
@@ -36,5 +25,17 @@ dayText:{
     fontFamily:'DancingScript-Bold'
     
 
-}
+},
+total:{
+    borderColor:'#F0A160',
+    borderWidth:5,
+    margin:5,
+    borderRadius:10,
+    zIndex:1000,
+    
+        elevation: 5,
+        // backgroundColor:'#e8f4f8'
+    backgroundColor:'#100c08'
+},
+
 })
